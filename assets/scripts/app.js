@@ -8,5 +8,5 @@
 const authEvents = require('./auth/events.js')
 
 $(() => {
-  $('gameBoard').on('click', authEvents.place) // place an X on the gameboard with a click
+  $('.box').on('click', authEvents.placeX) // place an X on the id of gameboard with a click
 })
