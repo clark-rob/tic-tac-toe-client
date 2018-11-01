@@ -15,9 +15,23 @@
       <h1>Super Tic-Tac-Bros.</h1>
     </header>
 
-    <p class="message"></p>
+    <p id="result"></p> <!--become result of match -->
 
     <body>
+      <p id="message"></p>
+      <!--token-auth training-->
+      <form id="sign-up" class="border">
+        <fieldset>
+          <legend>Sign Up!</legend>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]"
+             placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]"
+             placeholder="Confirm Password">
+            <input type="submit" value="Sign Up!">
+        </fieldset>
+      </form>
+      <!--token-auth training-->
 
       <div class="board" id="gameBoard">
         <div class="box" id='1' type='click'></div>
