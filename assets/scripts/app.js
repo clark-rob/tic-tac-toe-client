@@ -9,10 +9,11 @@
 const authEvents = require('./auth/events.js')
 // players:
 const playerOne = 'X' // player one's letter
-// const playerTwo = 'O' // player two's letter
+const playerTwo = 'O' // player two's letter
 // gameBoard:
-// const board = $('.board') // tic tac board
+const board = $('.board') // tic tac board
 const box = $('.box') // tic-tac box
+
 /* const winningPath = [ // all win paths
   $(['#1, #2, #3']),
   $(['#4, #5, #6']),
@@ -29,14 +30,16 @@ const box = $('.box') // tic-tac box
 
 $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
+  $('#sign-in').on('submit', authEvents.onSignIn)
+  $('sign-out').on('submit', authEvents.onSignOff)
+
   // place an X on the id of gameboard with a click
   box.on('click', function () {
-    console.log(playerOne)
-    box.append(playerOne)
-    if (box === null) {
-
+    if (box === '') {
+      this.append(playerOne)
+      console.log('taken')
     } else {
     }
-  })
-  // player can place the letter X in empty box
+  })// player can place the letter X in empty box
+
 })

@@ -19,10 +19,19 @@
 
     <body>
       <p id="message"></p>
+      <p id="username"></p>
       <!--token-auth training-->
+      <form id="sign-in" class="border">
+        <fieldset>
+            <input type="text" name="credentials[email]" placeholder="Email">
+            <input type="password" name="credentials[password]"
+             placeholder="Password">
+            <input type="submit" value="Sign In">
+        </fieldset>
+      </form>
+
       <form id="sign-up" class="border">
         <fieldset>
-          <legend>Sign Up!</legend>
             <input type="text" name="credentials[email]" placeholder="Email">
             <input type="password" name="credentials[password]"
              placeholder="Password">
@@ -31,6 +40,13 @@
             <input type="submit" value="Sign Up!">
         </fieldset>
       </form>
+
+      <form id="sign-out" class="border">
+        <fieldset>
+            <input type="submit" value="Sign Out">
+        </fieldset>
+      </form>
+
       <!--token-auth training-->
 
       <div class="board" id="gameBoard">
