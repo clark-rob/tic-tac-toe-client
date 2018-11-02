@@ -10,7 +10,8 @@
 }
 
 .box {
-  border: 2px solid black;
+  background-image: url('public/Question_Block_NSMB.png');
+  background-size: contain;
   flex: 0 0 33%;
   font-size: 100px;
   height: 200px;

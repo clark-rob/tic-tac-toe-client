@@ -11,20 +11,13 @@ const authEvents = require('./auth/events.js')
 const playerOne = 'M' // player one's letter
 const playerTwo = 'L' // player two's letter
 // let players = [playerOne, playerTwo]// players:
-let currentPlayer = playerOne
+let currentPlayer = ''
 // gameBoard:
 // let game = $('#game') // tic tac board
 const box = $('.box') // tic-tac box
-/* const winningPath = [ // all win paths
-  $(['#1, #2, #3']),
-  $(['#4, #5, #6']),
-  $(['#7, #8, #9']),
-  $(['#1, #4, #7']),
-  $(['#2, #5, #8']),
-  $(['#3, #6, #9']),
-  $(['#1, #5, #9']),
-  $(['#3, #5, #7'])
-] */
+const winningPath = [ // all win paths
+  [box[0], box[1], box[2]]
+]
 // const startGame = [] // begin with empty array
 // let move = 0 // number of moves
 let currentMove = 0 // move to begin with
@@ -35,9 +28,26 @@ $(() => {
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('submit', authEvents.onSignOff)
 
+  //let boxesInPlay = []
+
+
   // place an X in box once, then change to O once
 
-  const nextPlayer = function () { // player changes to next when current move changes
+  const nextPlayer = function () {
+    if (currentMove % 2) { // if current move is a factor of 2
+      console.log(currentMove)
+      currentMove++// add another move
+      currentPlayer = playerTwo // set current to two
+      console.log(currentPlayer)
+      return currentPlayer// playerTwo is placed
+    } else { // if current move is not a factor of 2
+      console.log(currentMove)
+      currentMove++// add another move
+      currentPlayer = playerOne // set player to one
+      console.log(currentPlayer)
+      return currentPlayer// add playerOne
+    }
+  }
   /*  if (currentMove === 0) { // if the current move is 0
       console.log(currentMove)
       currentMove++ // another move is added
@@ -49,17 +59,22 @@ $(() => {
     }
   } */
 
-    if (currentMove % 2) { // if current move is a factor of 2
-      console.log(currentMove)
-      currentMove++// add another move
-      return playerTwo// playerTwo is placed
-    } else { // if current move is not a factor of 2
-      currentMove++// add another move
-      return playerOne// add playerOne
-    }
-  }
   const onBoxClick = event => {
     $(event.target).append(nextPlayer) // on the box click, player and move change
   }
   box.one('click', onBoxClick) // when the box is clicked
+
+  const createGrid = function () {
+    for (let i = 0; i < box.length; i++) { // for each box in the array
+
+    }
+  }
+  // see if current player can become playerOne
+  // try to find who is current player
+  // set up winning scenerio
+   // if currentMove = 8 result=tie
+  // continue to use onBoxClick function to find array
+  $('#retry').on('click', function () {
+    event.preventDefault()
+  })
 })
