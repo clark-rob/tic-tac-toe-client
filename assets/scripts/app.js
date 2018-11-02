@@ -8,12 +8,13 @@
 
 const authEvents = require('./auth/events.js')
 // players:
-const playerOne = 'X' // player one's letter
-const playerTwo = 'O' // player two's letter
+const playerOne = 'M' // player one's letter
+const playerTwo = 'L' // player two's letter
+// let players = [playerOne, playerTwo]// players:
+let currentPlayer = playerOne
 // gameBoard:
-const board = $('.board') // tic tac board
+// let game = $('#game') // tic tac board
 const box = $('.box') // tic-tac box
-
 /* const winningPath = [ // all win paths
   $(['#1, #2, #3']),
   $(['#4, #5, #6']),
@@ -25,21 +26,40 @@ const box = $('.box') // tic-tac box
   $(['#3, #5, #7'])
 ] */
 // const startGame = [] // begin with empty array
-// const turnCount = [] // number of turns
+// let move = 0 // number of moves
+let currentMove = 0 // move to begin with
 // const winCount = []
 
 $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
-  $('sign-out').on('submit', authEvents.onSignOff)
+  $('#sign-out').on('submit', authEvents.onSignOff)
 
-  // place an X on the id of gameboard with a click
-  box.on('click', function () {
-    if (box === '') {
-      this.append(playerOne)
-      console.log('taken')
-    } else {
+  // place an X in box once, then change to O once
+
+  const nextPlayer = function () { // player changes to next when current move changes
+  /*  if (currentMove === 0) { // if the current move is 0
+      console.log(currentMove)
+      currentMove++ // another move is added
+      return playerOne // playerOne is placed
+    } else { // but if current move is not 0
+      console.log(currentMove)
+      currentMove-- // move is subtracted
+      return playerTwo // playerTwo is placed
     }
-  })// player can place the letter X in empty box
+  } */
 
+    if (currentMove % 2) { // if current move is a factor of 2
+      console.log(currentMove)
+      currentMove++// add another move
+      return playerTwo// playerTwo is placed
+    } else { // if current move is not a factor of 2
+      currentMove++// add another move
+      return playerOne// add playerOne
+    }
+  }
+  const onBoxClick = event => {
+    $(event.target).append(nextPlayer) // on the box click, player and move change
+  }
+  box.one('click', onBoxClick) // when the box is clicked
 })

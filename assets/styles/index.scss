@@ -1,17 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
 
-.board { //want the gameBoard to be 3x3, center
+#game { //want the gameBoard to be 3x3, center
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;
-  text-align: center;
   width: 600px;
 }
 
 .box {
   border: 2px solid black;
   flex: 0 0 33%;
+  font-size: 100px;
   height: 200px;
+  text-align: center;
 }
