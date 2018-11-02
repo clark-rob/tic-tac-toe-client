@@ -39,8 +39,17 @@ const onSignOut = event => {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
+
+const onNewGame = event => { // new game on click function
+  event.preventDefault() // prevent reload
+  api.newGame() // api file is called
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
-  onSignOut
+  onSignOut,
+  onNewGame
 }
