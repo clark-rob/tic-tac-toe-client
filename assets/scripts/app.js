@@ -8,16 +8,29 @@
 
 const authEvents = require('./auth/events.js')
 
-
-// players:
-const playerOne = 'M' // player one's letter
-const playerTwo = 'L' // player two's letter
+const players = [
+  {
+    playerOne: 'M' // player one's letter
+  },
+  {
+    playerTwo: 'L' // player two's letter
+  }
+]
 // let players = [playerOne, playerTwo]// players:
 let currentPlayer
 // gameBoard:
 // let game = $('#game') // tic tac board
 const box = $('.box') // tic-tac box
-const winningPath = ['1', '2', '3']
+const winningPath = [ // each box has content that equals player
+  ['0', '1', '2'],
+  ['3', '4', '5'],
+  ['6', '7', '8'],
+  ['0', '3', '6'],
+  ['1', '4', '7'],
+  ['2', '5', '8'],
+  ['0', '4', '8'],
+  ['2', '4', '6']
+]
 // to win you need 3 values
 // const startGame = [] // begin with empty array
 // let move = 0 // number of moves
@@ -25,7 +38,7 @@ let currentMove = 1 // move to begin with
 // const winCount = []
 const boxesInPlay = []
 
-// $('#' + event.target.id).text() //jquery selector to post div
+// $('#' + event.target.id).text() //jquery selector to post div value
 
 $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
@@ -36,12 +49,12 @@ $(() => {
 
   const nextPlayer = function () {
     if (currentMove % 2) { // if current move is a factor of 2
-      //console.log(currentMove)
-      currentPlayer = playerOne // set current to one
+      // console.log(currentMove)
+      currentPlayer = players[0].playerOne // set current to one
       return currentPlayer// playerOne is set
     } else { // if current move is not a factor of 2
-      //console.log(currentMove)
-      currentPlayer = playerTwo // set player to two
+      // console.log(currentMove)
+      currentPlayer = players[1].playerTwo // set player to two
       return currentPlayer// playerTwo is set
     }
   }
@@ -50,43 +63,42 @@ $(() => {
 //  3|4|5
 //  6|7|8
 
-
   const gameCheck = function () {
     console.log('current move= ' + currentMove)
     console.log(typeof winningPath[0])
     if (currentMove >= 3) { // if currentMove reaches 3
-      //if (boxesInPlay === winningPath) { // if selected three content equal a winningPath values
-    if (boxesInPlay[0] === winningPath[0] && boxesInPlay[1] === winningPath[1] && boxesInPlay[2] === winningPath[2]) {
+      // if (boxesInPlay === winningPath) { // if selected three content equal a winningPath values
+      if (boxesInPlay[0] && boxesInPlay[1] && boxesInPlay[2] === winningPath[0]) {
         console.log('win')// check selected boxes(boxesInPlay) and compare to winningPath to determine win
-    } else if (boxesInPlay[3] === winningPath[3] && boxesInPlay[4] === winningPath[4] && boxesInPlay[5] === winningPath[5]) {
+      } else if (boxesInPlay[3] === winningPath[3] && boxesInPlay[4] === winningPath[4] && boxesInPlay[5] === winningPath[5]) {
         console.log('win')
-    } else if (boxesInPlay[6] === winningPath[6] && boxesInPlay[7] === winningPath[7] && boxesInPlay[8] === winningPath[8]) {
+      } else if (boxesInPlay[6] === winningPath[6] && boxesInPlay[7] === winningPath[7] && boxesInPlay[8] === winningPath[8]) {
         console.log('win')
-    } else if (boxesInPlay[0] === winningPath[0] && boxesInPlay[3] === winningPath[3] && boxesInPlay[6] === winningPath[6]) {
+      } else if (boxesInPlay[0] === winningPath[0] && boxesInPlay[3] === winningPath[3] && boxesInPlay[6] === winningPath[6]) {
         console.log('win')
-    } else if (boxesInPlay[1] === winningPath[1] && boxesInPlay[4] === winningPath[4] && boxesInPlay[7] === winningPath[7]) {
+      } else if (boxesInPlay[1] === winningPath[1] && boxesInPlay[4] === winningPath[4] && boxesInPlay[7] === winningPath[7]) {
         console.log('win')
-    } else if (boxesInPlay[2] === winningPath[2] && boxesInPlay[5] === winningPath[5] && boxesInPlay[8] === winningPath[8]) {
+      } else if (boxesInPlay[2] === winningPath[2] && boxesInPlay[5] === winningPath[5] && boxesInPlay[8] === winningPath[8]) {
         console.log('win')
-    } else if (boxesInPlay[0] === winningPath[0] && boxesInPlay[4] === winningPath[4] && boxesInPlay[8] === winningPath[8]) {
+      } else if (boxesInPlay[0] === winningPath[0] && boxesInPlay[4] === winningPath[4] && boxesInPlay[8] === winningPath[8]) {
         console.log('win')
-    } else if (boxesInPlay[2] === winningPath[2] && boxesInPlay[4] === winningPath[4] && boxesInPlay[6] === winningPath[6]) {
+      } else if (boxesInPlay[2] === winningPath[2] && boxesInPlay[4] === winningPath[4] && boxesInPlay[6] === winningPath[6]) {
         console.log('win')
-    }
+      } else {
         console.log('lose')
       }
       console.log('box in play= ' + boxesInPlay)
-      console.log('win path= ' + winningPath)
+      console.log('win path= ' + winningPath[0])
+    }
   }
   // determine value of winner by using currentPlayer
 
-
   const onBoxClick = event => {
     $(event.target).append(nextPlayer) // on the box click, player change
-    //console.log(typeof event.target.id)
+    // console.log(typeof event.target.id)
     console.log('event= ' + $('#' + event.target.id).text())
-    //console.log('target id= ' + event.target.id)
-    //console.log('Current player= ' + currentPlayer)
+    // console.log('target id= ' + event.target.id)
+    console.log('Current player= ' + currentPlayer)
     boxesInPlay.push(event.target.id)// box index is pushed to boxesInPlay
     gameCheck()
     currentMove++ // each click, currentMove increments 1
