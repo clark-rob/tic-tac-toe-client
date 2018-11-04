@@ -38,6 +38,7 @@ const players = [
 ]
 
 // .html('<img src="../../public/marioprofile.png">')
+// .html('<img src="../../public/luigiprofile.png">')
 
 let currentPlayer
 let currentMove = 1 // move to begin with
