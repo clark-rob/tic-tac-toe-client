@@ -6,7 +6,13 @@
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
+/* --------required files-------- */
+
 const authEvents = require('./auth/events.js')
+
+const gameEvents = require('./game/events.js')
+
+/* ------------------------- */
 
 const players = [
   {
@@ -20,7 +26,7 @@ const players = [
 let currentPlayer
 // gameBoard:
 // let game = $('#game') // tic tac board
-const box = $('.box') // tic-tac box
+const box = $('.box'.id).text() // tic-tac box
 const winningPath = [ // each box has content that equals player
   ['0', '1', '2'],
   ['3', '4', '5'],
@@ -41,10 +47,14 @@ const boxesInPlay = []
 // $('#' + event.target.id).text() //jquery selector to post div value
 
 $(() => {
+  /* Auth Events */
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#sign-out').on('submit', authEvents.onSignOff)
-  $('#new-game').on('click', authEvents.onNewGame)
+  /* Game Events */
+  $('#new-game').on('click', gameEvents.onCreateGame)
+
+  /* ------------------------ */
   // place an X in box once, then change to O once
 
   const nextPlayer = function () {
@@ -63,12 +73,16 @@ $(() => {
 //  3|4|5
 //  6|7|8
 
+
+// if box 0 1 2 have content that is X, X wins; if they have O, O wins, else tie
   const gameCheck = function () {
     console.log('current move= ' + currentMove)
-    console.log(typeof winningPath[0])
+    //console.log(typeof winningPath[0])
     if (currentMove >= 3) { // if currentMove reaches 3
+
+      if (boxesInPlay[0] && boxesInPlay[1] && boxesInPlay[2] === players[0].playerOne)
       // if (boxesInPlay === winningPath) { // if selected three content equal a winningPath values
-      if (boxesInPlay[0] && boxesInPlay[1] && boxesInPlay[2] === winningPath[0]) {
+    /*  if (boxesInPlay[0] && boxesInPlay[1] && boxesInPlay[2] === winningPath[0]) {
         console.log('win')// check selected boxes(boxesInPlay) and compare to winningPath to determine win
       } else if (boxesInPlay[3] === winningPath[3] && boxesInPlay[4] === winningPath[4] && boxesInPlay[5] === winningPath[5]) {
         console.log('win')
@@ -86,7 +100,7 @@ $(() => {
         console.log('win')
       } else {
         console.log('lose')
-      }
+      } */
       console.log('box in play= ' + boxesInPlay)
       console.log('win path= ' + winningPath[0])
     }
@@ -96,15 +110,16 @@ $(() => {
   const onBoxClick = event => {
     $(event.target).append(nextPlayer) // on the box click, player change
     // console.log(typeof event.target.id)
-    console.log('event= ' + $('#' + event.target.id).text())
-    // console.log('target id= ' + event.target.id)
+    const selectedBox = $('#' + event.target.id).text() // takes content of selected box
+    console.log('box conten= ' + selectedBox)
+    console.log('target id= ' + event.target.id)
     console.log('Current player= ' + currentPlayer)
-    boxesInPlay.push(event.target.id)// box index is pushed to boxesInPlay
+    boxesInPlay.push(selectedBox)// box content is pushed to boxesInPlay
     gameCheck()
     currentMove++ // each click, currentMove increments 1
   }
 
-  box.one('click', onBoxClick) // when the box is clicked
+  $('.box').one('click', onBoxClick) // when the box is clicked
 
 
   /*const newGame = function () {

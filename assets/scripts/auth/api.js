@@ -23,6 +23,17 @@ const signIn = data => {
   })
 }
 
+const changePassword = data => {
+  return $.ajax({
+    url: config.apiUrl + '/change-password',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 const signOut = () => {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
@@ -33,22 +44,9 @@ const signOut = () => {
   })
 }
 
-
-const newGame = () => {
-  console.log('data is', data)
-  return $.ajax({
-    url: config.apiUrl + '/games',
-    method: 'POST',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: {}
-  })
-}
-
 module.exports = {
   signUp,
   signIn,
-  signOut,
-  newGame
+  changePassword,
+  signOut
 }

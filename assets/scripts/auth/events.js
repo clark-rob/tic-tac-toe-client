@@ -33,6 +33,14 @@ const onSignIn = event => {
     .catch(ui.signInFailure)
 }
 
+const onChangePassword = event => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
+
 const onSignOut = event => {
   event.preventDefault()
   api.signOut()
@@ -40,16 +48,9 @@ const onSignOut = event => {
     .catch(ui.signOutFailure)
 }
 
-const onNewGame = event => { // new game on click function
-  event.preventDefault() // prevent reload
-  api.newGame() // api file is called
-    .then(ui.newGameSuccess)
-    .catch(ui.newGameFailure)
-}
-
 module.exports = {
   onSignUp,
   onSignIn,
-  onSignOut,
-  onNewGame
+  onChangePassword,
+  onSignOut
 }

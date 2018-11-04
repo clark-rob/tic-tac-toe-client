@@ -1,6 +1,6 @@
 #!/bi/bash
 # use this as framework for new game
-curl 'https://tic-tac-toe-wdi.herokuapp.com/sign-up' \
+curl 'https://tic-tac-toe-wdi.herokuapp.com/games' \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
