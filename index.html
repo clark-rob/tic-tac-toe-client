@@ -15,11 +15,28 @@
       <h1>Super Tic-Tac-Bros.</h1>
     </header>
 
-    <p id="result"></p> <!--become result of match -->
+
 
     <body>
 
+      <div class="modal fade" id="result">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="resultsModalLabel">Results are in...</h5>
+                <div class="modal-body">
+                <h5 id="phrase"></h5>
+                </div>
+              <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="save">New Game</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <p id="username"></p>
+
 
       <!--Modal-->
       <button type="button" class="btn btn-primary" data-toggle="modal"

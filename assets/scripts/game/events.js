@@ -37,6 +37,8 @@ const players = [
   }
 ]
 
+// .html('<img src="../../public/marioprofile.png">')
+
 let currentPlayer
 let currentMove = 1 // move to begin with
 
@@ -84,34 +86,42 @@ const gameCheck = function () {
   // console.log('current move= ' + currentMove)
   // console.log('div #0 = ' + $('#0').text())
   if (players[0].move >= 3) { // if P1 reaches 3 moves
-    if ($('#0').text() === $('#1').text() && $('#1').text() === $('#2').text()) { // if the jQuery Id equal to each other you get a winner
-      // $('#result').modal('Itsa Me a' + currentPlayer + '!')
-      $('#result').text('Itsa Me a' + currentPlayer + '!') // current player is then awarded winner
-
+    if ($('#0').text() === $('#1').text() && $('#1').text() === $('#2').text() && $('#0').text() !== '') { // if the jQuery Id equal to each other you get a winner
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!') // current player is then awarded winner
+      // $('#result').text('Itsa Me a' + currentPlayer + '!')
+      console.log('Itsa Me a' + currentPlayer + '!')
+    } else if ($('#3').text() === $('#4').text() && $('#4').text() === $('#5').text() && $('#3').text() !== '') {
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!')
       // console.log('Itsa Me a' + currentPlayer + '!')
-    } else if ($('#3').text() === $('#4').text() && $('#4').text() === $('#5').text()) {
-      $('#result').text('Itsa Me a' + currentPlayer + '!')
+    } else if ($('#6').text() === $('#7').text() && $('#7').text() === $('#8').text() && $('#6').text() !== '') {
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!')
       // console.log('Itsa Me a' + currentPlayer + '!')
-    } else if ($('#6').text() === $('#7').text() && $('#7').text() === $('#8').text()) {
-      $('#result').text('Itsa Me a' + currentPlayer + '!')
+    } else if ($('#0').text() === $('#3').text() && $('#3').text() === $('#6').text() && $('#0').text() !== '') {
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!')
       // console.log('Itsa Me a' + currentPlayer + '!')
-    } else if ($('#0').text() === $('#3').text() && $('#3').text() === $('#6').text()) {
-      $('#result').text('Itsa Me a' + currentPlayer + '!')
+    } else if ($('#1').text() === $('#4').text() && $('#4').text() === $('#7').text() && $('#1').text() !== '') {
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!')
       // console.log('Itsa Me a' + currentPlayer + '!')
-    } else if ($('#1').text() === $('#4').text() && $('#4').text() === $('#7').text()) {
-      $('#result').text('Itsa Me a' + currentPlayer + '!')
+    } else if ($('#2').text() === $('#5').text() && $('#5').text() === $('#8').text() && $('#2').text() !== '') {
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!')
       // console.log('Itsa Me a' + currentPlayer + '!')
-    } else if ($('#2').text() === $('#5').text() && $('#5').text() === $('#8').text()) {
-      $('#result').text('Itsa Me a' + currentPlayer + '!')
+    } else if ($('#0').text() === $('#4').text() && $('#4').text() === $('#8').text() && $('#0').text() !== '') {
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!')
       // console.log('Itsa Me a' + currentPlayer + '!')
-    } else if ($('#0').text() === $('#4').text() && $('#4').text() === $('#8').text()) {
-      $('#result').text('Itsa Me a' + currentPlayer + '!')
-      // console.log('Itsa Me a' + currentPlayer + '!')
-    } else if ($('#2').text() === $('#4').text() && $('#4').text() === $('#6').text()) {
-      $('#result').text('Itsa Me a' + currentPlayer + '!')
+    } else if ($('#2').text() === $('#4').text() && $('#4').text() === $('#6').text() && $('#2').text() !== '') {
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Me, a' + currentPlayer + '!')
       // console.log('Itsa Me a' + currentPlayer + '!')
     } else if (currentMove === 9) {
-      $('#result').text('Itsa Tie!')
+      $('#result').modal('show')
+      $('#phrase').text('Itsa Tie!')
       // console.log('Itsa Tie! LETSA GOOOO')
     }
   }
