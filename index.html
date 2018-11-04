@@ -18,45 +18,67 @@
     <p id="result"></p> <!--become result of match -->
 
     <body>
-      <p id="message"></p>
       <p id="username"></p>
-      <!--token-auth training-->
-      <form id="sign-in" class="border">
-        <fieldset>
-            <input type="text" name="credentials[email]" placeholder="Email">
-            <input type="password" name="credentials[password]"
-             placeholder="Password">
-            <input type="submit" value="Sign In">
-        </fieldset>
-      </form>
 
-      <form id="sign-up" class="border">
-        <fieldset>
-            <input type="text" name="credentials[email]" placeholder="Email">
-            <input type="password" name="credentials[password]"
-             placeholder="Password">
-            <input type="password" name="credentials[password_confirmation]"
-             placeholder="Confirm Password">
-            <input type="submit" value="Sign Up!">
-        </fieldset>
-      </form>
+      <!--Modal-->
+      <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#authoizationModal">Sign In</button>
 
-      <form id="change-password" class="border">
-        <fieldset>
-            <input type="password" name="passwords[old]" placeholder="Old Password">
-            <input type="password" name="passwords[new]"
-             placeholder="New Password">
-            <input type="submit" value="Change password">
-        </fieldset>
-      </form>
+        <div class="modal fade" id="authoizationModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="authorizationModalLabel">Sign In</h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <!--token-auth training-->
+                <p id="message"></p>
+                <form id="sign-in" class="border">
+                  <fieldset>
+                      <input type="text" name="credentials[email]" placeholder="Email">
+                      <input type="password" name="credentials[password]"
+                       placeholder="Password">
+                      <input type="submit" value="Sign In">
+                  </fieldset>
+                </form>
 
-      <form id="sign-out" class="border">
-        <fieldset>
-            <input type="submit" value="Sign Out">
-        </fieldset>
-      </form>
+                <form id="sign-up" class="border">
+                  <fieldset>
+                      <input type="text" name="credentials[email]" placeholder="Email">
+                      <input type="password" name="credentials[password]"
+                       placeholder="Password">
+                      <input type="password" name="credentials[password_confirmation]"
+                       placeholder="Confirm Password">
+                      <input type="submit" value="Sign Up!">
+                  </fieldset>
+                </form>
 
-      <!--token-auth training-->
+                <form id="change-password" class="border">
+                  <fieldset>
+                      <input type="password" name="passwords[old]" placeholder="Old Password">
+                      <input type="password" name="passwords[new]"
+                       placeholder="New Password">
+                      <input type="submit" value="Change password">
+                  </fieldset>
+                </form>
+
+                <form id="sign-out" class="border">
+                  <fieldset>
+                      <input type="submit" value="Sign Out">
+                  </fieldset>
+                </form>
+
+                <!--token-auth training-->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="save">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!--Modal-->
+
 
       <button id="new-game" type="button">New Game</button>
 
@@ -72,6 +94,5 @@
         <div class="box" id='8' type='click'></div>
       </div>
 
-      <button id="retry" type="button">Retry</button>
     </body>
 </html>

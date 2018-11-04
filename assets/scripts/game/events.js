@@ -38,9 +38,12 @@ const players = [
 ]
 
 let currentPlayer
+let currentMove = 1 // move to begin with
+
 // gameBoard:
 // let game = $('#game') // tic tac board
-// const box = $('.box'.id).text() // tic-tac box
+let gameBoard
+const boxes = document.querySelectorAll('.box') // tic-tac box
 const winningPath = [ // each box has content that equals player
   [0, 1, 2],
   [3, 4, 5],
@@ -54,13 +57,10 @@ const winningPath = [ // each box has content that equals player
 // to win you need 3 values
 // const startGame = [] // begin with empty array
 // let move = 0 // number of moves
-let currentMove = 1 // move to begin with
 // const winCount = []
 // const boxesOfPlayerOne = []
 // const boxesOfPlayerTwo = []
-let gameBoard
 // $('#' + event.target.id).text() //jquery selector to post div value
-
 
 // place an X in box once, then change to O once
 
@@ -86,17 +86,18 @@ const nextPlayer = function () {
 // if box 0 1 2 have content that is X, X wins; if they have O, O wins, else tie
 const gameCheck = function () {
   console.log('current move= ' + currentMove)
-  console.log(typeof gameBoard)
-  console.log(typeof players[0].boxes)
-  if (players[0].move >= 3) { // if currentMove reaches 3
-
-    if (players[0].boxes === gameBoard) {
-      console.log('win')
-    } /*else {
-      console.log('lose')
-    }*/
-    // if (boxesInPlay === winningPath) { // if selected three content equal a winningPath values
-  /*  if (boxesInPlay[0] && boxesInPlay[1] && boxesInPlay[2] === winningPath[0]) {
+  console.log('Gb is ' + typeof winningPath)
+  console.log('P1 boxes are ' + typeof players[0].boxes)
+  if (players[0].moves >= 3) { // if P1 reaches 3 moves
+    for (let i = 0; i < winningPath.length; i++) {
+      if (players[0].boxes === winningPath[i]) {
+        console.log('win')
+      } else {
+        console.log('lose')
+      }
+    }
+    /* if (boxesInPlay === winningPath) { // if selected three content equal a winningPath values
+    if (boxesInPlay[0] && boxesInPlay[1] && boxesInPlay[2] === winningPath[0]) {
       console.log('win')// check selected boxes(boxesInPlay) and compare to winningPath to determine win
     } else if (boxesInPlay[3] === winningPath[3] && boxesInPlay[4] === winningPath[4] && boxesInPlay[5] === winningPath[5]) {
       console.log('win')
@@ -115,8 +116,8 @@ const gameCheck = function () {
     } else {
       console.log('lose')
     } */
-    //console.log('box in play= ' + boxesInPlay)
-    console.log('win path= ' + winningPath[0])
+    // console.log('box in play= ' + boxesInPlay)
+    // console.log('win path= ' + winningPath[0])
   }
 }
 // determine value of winner by using currentPlayer
@@ -125,20 +126,20 @@ const onBoxClick = event => {
   $(event.target).append(nextPlayer) // on the box click, player change
   // console.log(typeof event.target.id)
   const selectedBox = $(event.target).text() // takes index of selected box and writes the content
-  console.log('box content= ' + selectedBox)
+  // console.log('GB= ' + gameBoard)
+  // console.log('box content= ' + selectedBox)
   console.log('target id= ' + event.target.id)
   console.log('Current player= ' + currentPlayer)
   console.log('p1 boxes= ' + players[0].boxes)
   console.log('p2 boxes= ' + players[1].boxes)
-  //boxesInPlay.push(selectedBox)// box content is pushed to boxesInPlay
-  gameBoard = $('#game').text()
-  console.log('GB= ' + gameBoard)
+  // boxesInPlay.push(selectedBox)// box content is pushed to boxesInPlay
   gameCheck()
+  gameBoard = $('#game').text() // makes gameBoard a variable that takes in content of the jQuery id of 'game' as a string
+  // console.log('GB= ' + gameBoard)
   currentMove++ // each click, currentMove increments 1
 }
 
-
-/*const createGame = function () {
+/* const createGame = function () {
   for (let i = 0; i < box.length; i++) { // for each box in the array
 
   }
@@ -150,7 +151,7 @@ const onBoxClick = event => {
 // continue to use onBoxClick function to find array
 $('#retry').on('click', function () {
   event.preventDefault()
-})*/
+}) */
 
 module.exports = {
   onCreateGame,
