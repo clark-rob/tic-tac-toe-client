@@ -1,5 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
 
+body{
+  margin: auto;
+  text-align: center;
+}
+
 #game { //want the gameBoard to be 3x3, center
   align-items: center;
   display: flex;
