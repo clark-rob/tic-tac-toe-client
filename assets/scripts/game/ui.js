@@ -15,7 +15,17 @@ const createGameFailure = data => {
   console.log('createGameFailure ran. Error is :', error)
 }
 
+const gameCheckWin = data => {
+  $('#result').text('Itsa Me a' + currentPlayer + '!')
+}
+
+const gameCheckTie = data => {
+  $('#result').text('Itsa Tie!')
+}
+
 module.exports = {
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  gameCheckWin,
+  gameCheckTie
 }

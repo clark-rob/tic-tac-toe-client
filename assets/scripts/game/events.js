@@ -26,12 +26,12 @@ const onCreateGame = event => { // new game on click function
 
 const players = [
   {
-    name: 'M', // player one's letter
+    name: 'Mario', // player one's letter
     move: 0, // player one's move
     boxes: [] // array of boxes P1 selected
   },
   {
-    name: 'L', // player two's letter
+    name: 'Luigi', // player two's letter
     move: 0, // player two's moves
     boxes: [] // array of boxes P2 selected
   }
@@ -43,8 +43,8 @@ let currentMove = 1 // move to begin with
 // gameBoard:
 // let game = $('#game') // tic tac board
 let gameBoard
-const winningPath = [$('#0').text(), $('#1').text(), $('#2').text(), $('#3').text(), $('#4').text(), $('#5').text(), $('#6').text(), $('#7').text(), $('#8').text()] // each box has content that equals player
-/*  [0, 1, 2],
+const winningPath = [// each box has content that equals player
+  [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
   [0, 3, 6],
@@ -52,13 +52,9 @@ const winningPath = [$('#0').text(), $('#1').text(), $('#2').text(), $('#3').tex
   [2, 5, 8],
   [0, 4, 8],
   [2, 4, 6]
-] */
-// to win you need 3 values
+]
 // const startGame = [] // begin with empty array
-// let move = 0 // number of moves
 // const winCount = []
-// const boxesOfPlayerOne = []
-// const boxesOfPlayerTwo = []
 // $('#' + event.target.id).text() //jquery selector to post div value
 
 // place an X in box once, then change to O once
@@ -68,7 +64,7 @@ const nextPlayer = function () {
     currentPlayer = players[0].name // set current to P1
     players[0].boxes.push(event.target.id) // selected box is pushed to P1 box
     players[0].move++ // playerOne move increments 1
-    console.log('p1 moves ' + players[0].move)
+    // console.log('p1 moves ' + players[0].move)
     return currentPlayer// playerOne is set
   } else { // if current move is not a factor of 2
     currentPlayer = players[1].name // set player to P2
@@ -82,36 +78,51 @@ const nextPlayer = function () {
 //  3|4|5
 //  6|7|8
 
-// if box 0 1 2 have content that is X, X wins; if they have O, O wins, else tie
+// if box 0 1 2 have content that is X, X wins; if they have O, O wins, else if moves are 9 tie
 const gameCheck = function () {
-  console.log('current move= ' + currentMove)
-  console.log('div #0 = ' + $('#0').text())
+  // const gameCheckWin = $('#result').text('Itsa Me a' + currentPlayer + '!')
+  // console.log('current move= ' + currentMove)
+  // console.log('div #0 = ' + $('#0').text())
   if (players[0].move >= 3) { // if P1 reaches 3 moves
     if ($('#0').text() === $('#1').text() && $('#1').text() === $('#2').text()) { // if the jQuery Id equal to each other you get a winner
-      console.log('Winner is ' + currentPlayer) // current player is then awarded winner
+      // $('#result').modal('Itsa Me a' + currentPlayer + '!')
+      $('#result').text('Itsa Me a' + currentPlayer + '!') // current player is then awarded winner
+
+      // console.log('Itsa Me a' + currentPlayer + '!')
     } else if ($('#3').text() === $('#4').text() && $('#4').text() === $('#5').text()) {
-      console.log('Winner is ' + currentPlayer)
+      $('#result').text('Itsa Me a' + currentPlayer + '!')
+      // console.log('Itsa Me a' + currentPlayer + '!')
     } else if ($('#6').text() === $('#7').text() && $('#7').text() === $('#8').text()) {
-      console.log('Winner is ' + currentPlayer)
+      $('#result').text('Itsa Me a' + currentPlayer + '!')
+      // console.log('Itsa Me a' + currentPlayer + '!')
     } else if ($('#0').text() === $('#3').text() && $('#3').text() === $('#6').text()) {
-      console.log('Winner is ' + currentPlayer)
+      $('#result').text('Itsa Me a' + currentPlayer + '!')
+      // console.log('Itsa Me a' + currentPlayer + '!')
     } else if ($('#1').text() === $('#4').text() && $('#4').text() === $('#7').text()) {
-      console.log('Winner is ' + currentPlayer)
+      $('#result').text('Itsa Me a' + currentPlayer + '!')
+      // console.log('Itsa Me a' + currentPlayer + '!')
     } else if ($('#2').text() === $('#5').text() && $('#5').text() === $('#8').text()) {
-      console.log('Winner is ' + currentPlayer)
+      $('#result').text('Itsa Me a' + currentPlayer + '!')
+      // console.log('Itsa Me a' + currentPlayer + '!')
     } else if ($('#0').text() === $('#4').text() && $('#4').text() === $('#8').text()) {
-      console.log('Winner is ' + currentPlayer)
+      $('#result').text('Itsa Me a' + currentPlayer + '!')
+      // console.log('Itsa Me a' + currentPlayer + '!')
     } else if ($('#2').text() === $('#4').text() && $('#4').text() === $('#6').text()) {
-      console.log('Winner is ' + currentPlayer)
-    } else {
-      console.log('You are not the Winner')
+      $('#result').text('Itsa Me a' + currentPlayer + '!')
+      // console.log('Itsa Me a' + currentPlayer + '!')
+    } else if (currentMove === 9) {
+      $('#result').text('Itsa Tie!')
+      // console.log('Itsa Tie! LETSA GOOOO')
     }
   }
 }
 // determine value of winner by using currentPlayer
 
 const onBoxClick = event => {
+  event.preventDefault()
   $(event.target).append(nextPlayer) // on the box click, player change
+  gameCheck()
+  currentMove++ // each click, currentMove increments 1
   // console.log(typeof event.target.id)
   // const selectedBox = $(event.target).text() // takes index of selected box and writes the content
   // console.log('GB= ' + gameBoard)
@@ -122,10 +133,8 @@ const onBoxClick = event => {
   console.log('p2 boxes= ' + players[1].boxes) // P2 array of boxes
 
   // boxesInPlay.push(selectedBox)// box content is pushed to boxesInPlay
-  gameCheck()
   // gameBoard = $('#game').text() // makes gameBoard a variable that takes in content of the jQuery id of 'game' as a string
   // console.log('GB= ' + gameBoard)
-  currentMove++ // each click, currentMove increments 1
 }
 
 module.exports = {
