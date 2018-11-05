@@ -18,9 +18,10 @@ const placeX = function () {
 
 const onCreateGame = event => { // new game on click function
   event.preventDefault() // prevent reload
-  api.createGame() // api file is called
-    .then(ui.createGameSuccess)
-    .catch(ui.createGameFailure)
+  $('.box').empty()
+  // api.createGame() // api file is called
+  //   .then(ui.createGameSuccess)
+  //   .catch(ui.createGameFailure)
 }
 /* -------------------------------- */
 
@@ -44,7 +45,7 @@ let currentPlayer
 let currentMove = 1 // move to begin with
 
 // gameBoard:
-// let game = $('#game') // tic tac board
+let game = $('#game') // tic tac board
 let gameBoard
 const winningPath = [// each box has content that equals player
   [0, 1, 2],
@@ -67,7 +68,7 @@ const nextPlayer = function () {
     currentPlayer = players[0].name // set current to P1
     players[0].boxes.push(event.target.id) // selected box is pushed to P1 box
     players[0].move++ // playerOne move increments 1
-    // console.log('p1 moves ' + players[0].move)
+    console.log('p1 moves ' + players[0].move)
     return currentPlayer// playerOne is set
   } else { // if current move is not a factor of 2
     currentPlayer = players[1].name // set player to P2
@@ -84,7 +85,7 @@ const nextPlayer = function () {
 // if box 0 1 2 have content that is X, X wins; if they have O, O wins, else if moves are 9 tie
 const gameCheck = function () {
   // const gameCheckWin = $('#result').text('Itsa Me a' + currentPlayer + '!')
-  // console.log('current move= ' + currentMove)
+  console.log('current move= ' + currentMove)
   // console.log('div #0 = ' + $('#0').text())
   if (players[0].move >= 3) { // if P1 reaches 3 moves
     if ($('#0').text() === $('#1').text() && $('#1').text() === $('#2').text() && $('#0').text() !== '') { // if the jQuery Id equal to each other you get a winner
