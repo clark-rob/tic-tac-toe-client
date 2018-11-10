@@ -16,10 +16,10 @@ const signUpFailure = error => {
 }
 
 const signInSuccess = data => {
-  console.log(data.user.token)
+  console.log(data.user)
   store.user = data.user
   $('#message').text('Signed In Successfully')
-  $('#username').text(data.user.email)
+  $('#username').text(data.user.email) // inserts username
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signInSuccess ran. Data is: ', data)
@@ -49,6 +49,7 @@ const changePasswordFailure = error => {
 const signOutSuccess = data => {
   store.user = null
   $('#message').text('Signed Out Successfully')
+  $('#username').text('') // removes text for username
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signOutSuccess ran. Data is: ', data)

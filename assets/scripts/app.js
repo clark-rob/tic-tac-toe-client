@@ -15,13 +15,14 @@ const gameEvents = require('./game/events1.1.js')
 /* ------------------------- */
 
 $(() => {
-  /* Auth Events */
+  /* -----------------Auth Events----------------- */
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
-  $('#sign-out').on('submit', authEvents.onSignOff)
+  $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-password').on('submit', authEvents.onChangePassword)
-  /* Game Events */
+  /* -----------------Auth Events----------------- */
+  /* ------------------Game Events------------------------ */
   $('#create-game').on('click', gameEvents.onCreateGameClick)
-  $('.box').on('click', gameEvents.onBoxClick) // when the box is clicked
-  /* ------------------------ */
+  $('#game').on('click', gameEvents.onBoxClick) // when the game board is clicked
+  /* ------------------Game Events------------------------ */
 })
