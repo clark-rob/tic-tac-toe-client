@@ -28,7 +28,7 @@
                 <h5 id="phrase"></h5>
                 </div>
               <div class="modal-footer">
-              <button type="button" id="newGame" class="btn btn-primary" data-dismiss="modal">New Game</button>
+              <button type="button" id="next-game" class="btn btn-primary" data-dismiss="modal">New Game</button>
               </div>
             </div>
           </div>
@@ -52,15 +52,6 @@
               <div class="modal-body">
                 <!--token-auth training-->
                 <p id="message"></p>
-                <form id="sign-in" class="border">
-                  <fieldset>
-                      <input type="text" name="credentials[email]" placeholder="Email">
-                      <input type="password" name="credentials[password]"
-                       placeholder="Password">
-                      <input type="submit" value="Sign In">
-                  </fieldset>
-                </form>
-
                 <form id="sign-up" class="border">
                   <fieldset>
                       <input type="text" name="credentials[email]" placeholder="Email">
@@ -69,6 +60,15 @@
                       <input type="password" name="credentials[password_confirmation]"
                        placeholder="Confirm Password">
                       <input type="submit" value="Sign Up!">
+                  </fieldset>
+                </form>
+
+                <form id="sign-in" class="border">
+                  <fieldset>
+                      <input type="text" name="credentials[email]" placeholder="Email">
+                      <input type="password" name="credentials[password]"
+                       placeholder="Password">
+                      <input type="submit" value="Sign In">
                   </fieldset>
                 </form>
 
@@ -98,7 +98,8 @@
       <!--Modal-->
 
       <!--GAME-->
-      <button id="create-game" type="button">Create Game</button>
+      <div class="x-win-totals">x Wins: <span id="x-win">0</span> </div>
+      <div class="o-win-totals">o Wins: <span id="o-win">0</span></div>
 
       <div id="game">
         <div class="box" id='0' type='click'></div>
@@ -112,5 +113,6 @@
         <div class="box" id='8' type='click'></div>
       </div>
 
+      <button type="button" id="create-game" class="btn btn-primary">Create Game</button>
     </body>
 </html>
