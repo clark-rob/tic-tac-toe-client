@@ -25,86 +25,26 @@ const onCreateGameClick = event => { // new game on click function
 }
 /* -------------------------------- */
 
-/* const players = [
-  {
-    name: 'Mario', // player one's letter
-    move: 0, // player one's move
-    boxes: [] // array of boxes P1 selected
-  },
-  {
-    name: 'Luigi', // player two's letter
-    move: 0, // player two's moves
-    boxes: [] // array of boxes P2 selected
-  }
-] */
 
-// .html('<img src="../../public/marioprofile.png">')
-// .html('<img src="../../public/luigiprofile.png">')
-const playerOne = 'Mario'
-const playerTwo = 'Luigi'
-let currentPlayer
+const playerOne = 'x'
+const playerTwo = 'o'
+let currentPlayer = playerOne
 let currentMove = 0 // move to begin with
 
 // gameBoard:
-let startGame = true // is the game done
+let gameOver = false // is the game done
 let startBoard = ['', '', '', '', '', '', '', '', '', '']
-// let gameBoard
-/* const winningPath = [// each box has content that equals player
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-] */
-// const startGame = [] // begin with empty array
-// const winCount = []
-// $('#' + event.target.id).text() //jquery selector to post div value
 
-// place an X in box once, then change to O once
-
-/* const nextPlayer = function () {
-  if (currentMove % 2) { // if current move has a remainder of 2 &
-    currentPlayer = playerTwo // set current to P1
-    // players[0].boxes.push(event.target.id) // selected box is pushed to P1 box
-    // playerOne.move++ // playerOne move increments 1
-    // console.log('p1 moves ' + players[0].move)
-    return currentPlayer// playerOne is set
-  } else { // if current move is not have a remainder of 2
-    currentPlayer = playerOne // set player to P2
-    // players[1].boxes.push(event.target.id) // selected box is pushed to P2 box
-    // playerTwo.move++ // playerTwo move increments 1
-    return currentPlayer// playerTwo is set
-  }
-} */
-
-const nextPlayer = function () {
-  if (currentMove % 2) { // if current move has a remainder of 2 &
-    currentPlayer = playerTwo // set current to P1
-    // players[0].boxes.push(event.target.id) // selected box is pushed to P1 box
-    // playerOne.move++ // playerOne move increments 1
-    // console.log('p1 moves ' + players[0].move)
-    return currentPlayer// playerOne is set
-  } else { // if current move is not have a remainder of 2
-    currentPlayer = playerOne // set player to P2
-    // players[1].boxes.push(event.target.id) // selected box is pushed to P2 box
-    // playerTwo.move++ // playerTwo move increments 1
-    return currentPlayer// playerTwo is set
+const startGame = function () { // beginning status of game
+  if (gameOver === true) {
+    startBoard = ['', '', '', '', '', '', '', '', '', '']// beginning status of board(empty)
+    currentPlayer = playerOne // beginning player is playerOne
+    currentMove = 0 // move starts at 0
+    gameOver = false // starts false, game is not done
+  } else {
   }
 }
 
-// event.target gets object
-// $('#' + event.target.id) gives you the id of the object targeted
-// .val() gets value inside an element
-// .off
-// .innerHTML
-//  0|1|2
-//  3|4|5
-//  6|7|8
-
-// if box 0 1 2 have content that is X, X wins; if they have O, O wins, else if moves are 9 tie
 const gameCheck = function () {
   // const gameCheckWin = $('#result').text('Itsa Me a' + currentPlayer + '!')
   // console.log('div #0 = ' + $('#0').text())
@@ -147,29 +87,47 @@ const gameCheck = function () {
       $('#phrase').text('Itsa Tie!')
       // console.log('Itsa Tie! LETSA GOOOO')
     }
+    console.log('game done = ' + gameOver)
   }
+  gameOver = true
 }
 // determine value of winner by using currentPlayer
 
+// board begins empty
+// x starts first
+// move starts at 0
+// x picks a square and marks the board
+// that placement cannot change
+// move plus 1
+// o goes next
+// repeat steps 4 - 6 alternating x and o
+
 const onBoxClick = event => {
   event.preventDefault()
-  $(event.target).append(nextPlayer) // on the box click, player change
-  console.log(event.target.id)
-  console.log($('#' + event.target.id))
-  currentMove++ // each click, currentMove increments 1
-  console.log('current move= ' + currentMove)
+  // console.log(event.target)
+  // console.log(event.target.id)
+  const boxIndex = $('#' + event.target.id).html()
+  if (boxIndex !== 'x' && boxIndex !== 'o') { // if the selected box does not equal x or o
+    console.log('box =' + boxIndex)
+    if (currentMove % 2 === 0) { // current move has a remainder of 2
+      currentPlayer = playerOne // make currentPlayer P1
+      $(event.target).append(playerOne) // insert P1
+      // startBoard.push("'" +  + "'") // push index to board
+      // console.log('player = ' + $('#' + event.target))
+      // console.log('gameBoard = ' + startBoard)
+      currentMove++ // increase currentMove by 1
+      // console.log('move = ' + currentMove)
+    } else { // no remainder
+      currentPlayer = playerTwo // make currentPlayer P2
+      $(event.target).append(currentPlayer) // insert current P2
+      currentMove++ // increase currentMove by 1
+      // console.log('move = ' + currentMove)
+    }
+  } else {
+    console.log('cant move') // else to continue the 'if boxIndex' statment
+  }
   gameCheck()
-  // console.log(typeof event.target.id)
-  // const selectedBox = $(event.target).text() // takes index of selected box and writes the content
-  // console.log('GB= ' + gameBoard)
-  console.log('box content= ' + $(event.target).text())
-  console.log('target id= ' + event.target.id) // box selected
-  // console.log('p1 boxes= ' + players[0].boxes) // P1 array of boxes
-  // console.log('p2 boxes= ' + players[1].boxes) // P2 array of boxes
-
-  // boxesInPlay.push(selectedBox)// box content is pushed to boxesInPlay
-  // gameBoard = $('#game').text() // makes gameBoard a variable that takes in content of the jQuery id of 'game' as a string
-  // console.log('GB= ' + gameBoard)
+  // startGame()
 }
 
 module.exports = {

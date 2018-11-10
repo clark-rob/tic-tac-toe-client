@@ -10,7 +10,7 @@
 
 const authEvents = require('./auth/events.js')
 
-const gameEvents = require('./game/events.js')
+const gameEvents = require('./game/events1.1.js')
 
 /* ------------------------- */
 
@@ -21,7 +21,7 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOff)
   $('#change-password').on('submit', authEvents.onChangePassword)
   /* Game Events */
-  $('#newGame').on('click', gameEvents.onCreateGame)
+  $('#create-game').on('click', gameEvents.onCreateGameClick)
   $('.box').on('click', gameEvents.onBoxClick) // when the box is clicked
   /* ------------------------ */
 })
