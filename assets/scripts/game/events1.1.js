@@ -34,6 +34,23 @@ const onCreateGameClick = event => { // new game on click function
 }
 /* -------------- Create Game ---------------- */
 
+/* -------------- Update Game ---------------- */
+const updateApi = function () {
+  event.preventDefault()
+  const data = {
+    game: {
+         cell: {
+           index: $(event.target.id),
+           value: $(event.target).append(currentPlayer)
+         }
+       },
+       over: gameOver
+    }
+  }
+
+}
+/* -------------- Update Game ---------------- */
+
 /* -------------------------------Win/Lose/Tie------------------------------ */
 const gameCheck = function () {
   if (currentMove >= 4) { // if currentMove reaches 4 moves, P1 and P2 moved twice each
@@ -116,12 +133,13 @@ const onBoxClick = event => {
   /* ----------------Player-Change------------------- */
   gameCheck()
   console.log('board = ' + startBoard)
-  console.log('board length= ' + startBoard.length)
+  // console.log('board length= ' + startBoard.length)
   // console.log('player = ' + $('#' + event.target))
 }
 /* --------------------------------onBoxClick------------------------------- */
 
 module.exports = {
   onCreateGameClick,
-  onBoxClick
+  onBoxClick,
+  updateApi
 }

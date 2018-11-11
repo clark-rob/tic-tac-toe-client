@@ -7,6 +7,7 @@ const createGameSuccess = data => {
   $('#game-status').removeClass()
   $('#game-status').addClass('success')
   console.log('createGameSuccess ran. Data is :', data)
+  $('#game').show()
 }
 
 const createGameFailure = error => {

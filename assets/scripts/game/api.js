@@ -20,14 +20,14 @@ const createGame = () => {
 const updateGame = () => {
   // console.log('data is', data)
   return $.ajax({
-    url: config.apiUrl + '/games/:id',
+    url: config.apiUrl + '/games/ + ',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data: {
     //   game: {
-    //     box: {
+    //     cell: {
     //       index:
     //       value:
     //     }
