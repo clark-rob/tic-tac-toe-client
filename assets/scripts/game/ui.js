@@ -1,17 +1,18 @@
 'use strict'
+
 const store = require('../store.js')
 
 const createGameSuccess = data => {
-  $('#message').text('New Game Made!')
-  $('#message').removeClass()
-  $('#message').addClass('success')
+  $('#game-status').text('New Game Made!')
+  $('#game-status').removeClass()
+  $('#game-status').addClass('success')
   console.log('createGameSuccess ran. Data is :', data)
 }
 
-const createGameFailure = data => {
-  $('#message').text('Error Creating Game')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
+const createGameFailure = error => {
+  $('#game-status').text('Error Creating Game')
+  $('#game-status').removeClass()
+  $('#game-status').addClass('failure')
   console.log('createGameFailure ran. Error is :', error)
 }
 

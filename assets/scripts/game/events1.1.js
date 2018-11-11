@@ -4,28 +4,7 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 
-const onCreateGameClick = event => { // new game on click function
-  event.preventDefault() // prevent reload
-  // const boxData  // how ever I am going to get the data from the box (event.target)
-  /* const data = {
-    game: {
-      box: {
-        index: boxData.cell.index,
-        value: boxData.cell.value
-      }
-    },
-    over: false
-  }*/
-  api.createGame()
-    /*.then(ui.) // create a board
-    .catch(ui.) // fail message */
-  // api.createGame() // api file is called
-  //   .then(ui.createGameSuccess)
-  //   .catch(ui.createGameFailure)
-}
-/* -------------------------------- */
-
-
+/* --------------vaiables ---------------- */
 const playerOne = 'x'
 const playerTwo = 'o'
 let currentPlayer = playerOne
@@ -33,25 +12,28 @@ let currentMove = 0 // move to begin with
 
 // gameBoard:
 let gameOver = false // is the game done
-let startBoard = $('#game') //.text() // HTML game
+let startBoard = $('#game') // .text() // HTML game
 startBoard = []
+/* --------------vaiables ---------------- */
 
-const onNextGame = event => { // beginning status of game
+/* -------------- Create Game ---------------- */
+const onCreateGameClick = event => { // new game on click function
   event.preventDefault()
-  console.log('button success')
-  if (gameOver === true) {
-    $('.box').empty() // clears box of content
-    startBoard = []// beginning status of board(empty)
-    // console.log('begin board =' + startBoard)
-    currentPlayer = playerOne // beginning player is playerOne
-    // console.log('begin player =' + currentPlayer)
-    currentMove = 0 // move starts at 0
-    // console.log('begin move =' + currentMove)
-    gameOver = false // starts false, game is not done
-    // console.log('game done =' + gameOver)
-  } else {
-  }
+  $('.box').empty() // clears box of content
+  startBoard = []// beginning status of board(empty)
+  // console.log('begin board =' + startBoard)
+  currentPlayer = playerOne // beginning player is playerOne
+  // console.log('begin player =' + currentPlayer)
+  currentMove = 0 // move starts at 0
+  // console.log('begin move =' + currentMove)
+  gameOver = false // starts false, game is not done
+  // console.log('game done =' + gameOver)
+  api.createGame()
+    .then(ui.createGameSuccess) // create a board
+    .catch(ui.createGameFailure) // fail message
 }
+/* -------------- Create Game ---------------- */
+
 /* -------------------------------Win/Lose/Tie------------------------------ */
 const gameCheck = function () {
   if (currentMove >= 4) { // if currentMove reaches 4 moves, P1 and P2 moved twice each
@@ -141,6 +123,5 @@ const onBoxClick = event => {
 
 module.exports = {
   onCreateGameClick,
-  onBoxClick,
-  onNextGame
+  onBoxClick
 }
