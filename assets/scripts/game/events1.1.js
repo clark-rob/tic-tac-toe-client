@@ -42,13 +42,13 @@ const onNextGame = event => { // beginning status of game
   if (gameOver === true) {
     $('.box').empty() // clears box of content
     startBoard = []// beginning status of board(empty)
-    console.log('begin board =' + startBoard)
+    // console.log('begin board =' + startBoard)
     currentPlayer = playerOne // beginning player is playerOne
-    console.log('begin player =' + currentPlayer)
+    // console.log('begin player =' + currentPlayer)
     currentMove = 0 // move starts at 0
-    console.log('begin move =' + currentMove)
+    // console.log('begin move =' + currentMove)
     gameOver = false // starts false, game is not done
-    console.log('game done =' + gameOver)
+    // console.log('game done =' + gameOver)
   } else {
   }
 }
