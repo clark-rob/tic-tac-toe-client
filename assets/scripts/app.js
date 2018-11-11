@@ -22,8 +22,7 @@ $(() => {
   $('#change-password').on('submit', authEvents.onChangePassword)
   /* -----------------Auth Events----------------- */
   /* ------------------Game Events------------------------ */
-  $('#create-game').on('click', gameEvents.onCreateGameClick)
+  $('.create-game').on('click', gameEvents.onCreateGameClick)
   $('#game').on('click', gameEvents.onBoxClick) // when the game board is clicked
-  $('#next-game').on('click', gameEvents.onNextGame)
   /* ------------------Game Events------------------------ */
 })

@@ -22,6 +22,11 @@ const signInSuccess = data => {
   $('#username').text(data.user.email) // inserts username
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('#sign-out').show() // sign out form appear
+  $('#change-password').show() // password form appear
+  $('#sign-up').hide() // sign up is hidden
+  $('#sign-in').hide() // sign in is hidden
+  $('.inOrOut').text('Out') // changes button to 'Out'
   console.log('signInSuccess ran. Data is: ', data)
 }
 
@@ -53,6 +58,11 @@ const signOutSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signOutSuccess ran. Data is: ', data)
+  $('#sign-out').hide() // sign out hidden
+  $('#change-password').hide() // password hidden
+  $('#sign-up').show() // sign up appears
+  $('#sign-in').show() // sign in appears
+  $('.inOrOut').text('In') // changes button to 'In'
 }
 
 const signOutFailure = error => {
