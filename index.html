@@ -19,7 +19,7 @@
 
     <body>
       <!-- Results Modal w/ board reset -->
-      <div class="modal fade" id="result">
+      <div class="modal fade" id="result" data-backdrop="static"> <!-- static prevents click outside of modal -->
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -28,7 +28,7 @@
                 <h5 id="phrase"></h5>
                 </div>
               <div class="modal-footer">
-              <button type="button" id="next-game" class="btn btn-primary" data-dismiss="modal">Next Game</button>
+              <button type="button" class="create-game" class="btn btn-primary" data-dismiss="modal" data-backdrop="static">Next Game</button>
               </div>
             </div>
           </div>
@@ -40,13 +40,13 @@
 
       <!--Modal-->
       <button type="button" class="btn btn-primary" data-toggle="modal"
-        data-target="#authoizationModal">Sign In</button>
+        data-target="#authoizationModal">Sign <span class="inOrOut">In</span></button>
 
         <div class="modal fade" id="authoizationModal">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="authorizationModalLabel">Sign In</h5>
+                <h5 class="modal-title" id="authorizationModalLabel">Sign <span class="inOrOut">In</span></h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
               </div>
               <div class="modal-body">
@@ -98,8 +98,9 @@
       <!--Modal-->
 
       <!--GAME-->
-      <div class="x-win-totals">x Wins: <span id="x-win">0</span> </div>
-      <div class="o-win-totals">o Wins: <span id="o-win">0</span></div>
+      <div class=''></div>
+
+      <div id="game-status" class="border"></div>
 
       <div id="game">
         <div class="box" id='0' type='click'></div>
@@ -113,6 +114,6 @@
         <div class="box" id='8' type='click'></div>
       </div>
 
-      <button type="button" id="create-game" class="btn btn-primary">Create Game</button>
+      <button type="button" class="create-game" class="btn btn-primary">Create Game</button>
     </body>
 </html>

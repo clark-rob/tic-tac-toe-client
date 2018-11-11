@@ -1,11 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
 
-body{
+body {
   margin: auto;
   text-align: center;
 }
 
+#sign-out {
+  display: none;
+}
+
+#change-password {
+  display: none;
+}
+
 #game { //want the gameBoard to be 3x3, center
+  display: none;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
