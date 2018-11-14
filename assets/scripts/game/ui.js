@@ -6,28 +6,45 @@ const createGameSuccess = data => {
   $('#game-status').text('New Game Made!')
   $('#game-status').removeClass()
   $('#game-status').addClass('success')
-  console.log('createGameSuccess ran. Data is :', data)
-  $('#game').show()
+  store.game = data.game // sends the game to the store, data.game takes that info
+  //   store.gameId = data.game.id
+  // console.log('createGameSuccess ran. Data is :', data.game)
+  $('#game').show() // board form appear
 }
 
 const createGameFailure = error => {
   $('#game-status').text('Error Creating Game')
   $('#game-status').removeClass()
   $('#game-status').addClass('failure')
-  console.log('createGameFailure ran. Error is :', error)
+  console.error('createGameFailure ran. Error is :', error)
 }
 
-const gameCheckWin = data => {
-  $('#result').text('Itsa Me a' + currentPlayer + '!')
+const updateGameSuccess = data => {
+  $('#game-status').removeClass()
+  $('#game-status').addClass('success')
+  console.log('updateGameSuccess ran. Data is :', data)
 }
 
-const gameCheckTie = data => {
-  $('#result').text('Itsa Tie!')
+const updateGameFailure = error => {
+  $('#game-status').text('Error Updating Game')
+  $('#game-status').removeClass()
+  $('#game-status').addClass('failure')
+  console.error('updateGameFailure ran. Error is :', error)
 }
+
+// const gameCheckWin = data => {
+//   $('#result').text('Itsa Me a' + currentPlayer + '!')
+// }
+
+// const gameCheckTie = data => {
+//   $('#result').text('Itsa Tie!')
+// }
 
 module.exports = {
   createGameSuccess,
   createGameFailure,
-  gameCheckWin,
-  gameCheckTie
+  updateGameSuccess,
+  updateGameFailure
+  // gameCheckWin,
+  // gameCheckTie
 }

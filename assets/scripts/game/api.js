@@ -12,28 +12,20 @@ const createGame = () => {
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data: {}
+    }
   })
 }
 
-const updateGame = () => {
-  // console.log('data is', data)
+const updateGame = (data) => {
+  console.log('game updated to ' + data)
+  // console.log('id ' + store.game.id) // game id
   return $.ajax({
-    url: config.apiUrl + '/games/ + ',
+    url: config.apiUrl + '/games/' + store.game.id, // game id to find the exact game played
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: {
-    //   game: {
-    //     cell: {
-    //       index:
-    //       value:
-    //     }
-    //   },
-    //   over: false
-    }
+    data
   })
 }
 module.exports = {

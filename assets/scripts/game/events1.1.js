@@ -9,7 +9,6 @@ const playerOne = 'x'
 const playerTwo = 'o'
 let currentPlayer = playerOne
 let currentMove = 0 // move to begin with
-
 // gameBoard:
 let gameOver = false // is the game done
 let startBoard = $('#game') // .text() // HTML game
@@ -18,7 +17,7 @@ startBoard = []
 
 /* -------------- Create Game ---------------- */
 const onCreateGameClick = event => { // new game on click function
-  event.preventDefault()
+  event.preventDefault() // may not need unless its a form
   $('.box').empty() // clears box of content
   startBoard = []// beginning status of board(empty)
   // console.log('begin board =' + startBoard)
@@ -33,23 +32,6 @@ const onCreateGameClick = event => { // new game on click function
     .catch(ui.createGameFailure) // fail message
 }
 /* -------------- Create Game ---------------- */
-
-/* -------------- Update Game ---------------- */
-const updateApi = function () {
-  event.preventDefault()
-  const data = {
-    game: {
-         cell: {
-           index: $(event.target.id),
-           value: $(event.target).append(currentPlayer)
-         }
-       },
-       over: gameOver
-    }
-  }
-
-}
-/* -------------- Update Game ---------------- */
 
 /* -------------------------------Win/Lose/Tie------------------------------ */
 const gameCheck = function () {
@@ -106,6 +88,25 @@ const gameCheck = function () {
 }
 /* -------------------------------Win/Lose/Tie------------------------------ */
 
+/* -------------- Update Game ---------------- */
+const updateApi = function (event, currentPlayer, gameOver) {
+  event.preventDefault()
+  const data = {
+    game: {
+      cell: {
+        index: event.target.id, // gives index value
+        value: currentPlayer // player currently
+      }
+    },
+    over: gameOver // instead of false?
+  }
+  api.updateGame(data)
+    .then(ui.updateGameSuccess)
+    .catch(ui.updateGameFailure)
+}
+
+/* -------------- Update Game ---------------- */
+
 /* --------------------------------onBoxClick------------------------------- */
 const onBoxClick = event => {
   event.preventDefault() // prevent page reload
@@ -113,6 +114,7 @@ const onBoxClick = event => {
   // console.log('target id = ' + ('#' + event.target.id))
   /* --------------------Player-Change----------------- */
   const boxIndex = $('#' + event.target.id).html()
+  // console.log('#' + event.target.id)
   if (boxIndex !== 'x' && boxIndex !== 'o') { // if the selected box does not equal x or o
     if (currentMove % 2 === 0) { // current move has a remainder of 2
       currentPlayer = playerOne // make currentPlayer P1
@@ -132,9 +134,7 @@ const onBoxClick = event => {
   }
   /* ----------------Player-Change------------------- */
   gameCheck()
-  console.log('board = ' + startBoard)
-  // console.log('board length= ' + startBoard.length)
-  // console.log('player = ' + $('#' + event.target))
+  updateApi(event, currentPlayer, gameOver)
 }
 /* --------------------------------onBoxClick------------------------------- */
 
