@@ -24,5 +24,6 @@ $(() => {
   /* ------------------Game Events------------------------ */
   $('.create-game').on('click', gameEvents.onCreateGameClick)
   $('#game').on('click', gameEvents.onBoxClick) // when the game board is clicked
+  $('#game').hide()
   /* ------------------Game Events------------------------ */
 })

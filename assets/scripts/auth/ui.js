@@ -5,7 +5,6 @@ const signUpSuccess = data => {
   $('#message').text('Welcome to the Game!')
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('signUpSuccess ran. Data is: ', data)
 }
 
 const signUpFailure = error => {
@@ -27,7 +26,7 @@ const signInSuccess = data => {
   $('#sign-up').hide() // sign up is hidden
   $('#sign-in').hide() // sign in is hidden
   $('.inOrOut').text('Out') // changes button to 'Out'
-  console.log('signInSuccess ran. Data is: ', data)
+  // console.log('signInSuccess ran. Data is: ', data)
 }
 
 const signInFailure = error => {
@@ -41,7 +40,6 @@ const changePasswordSuccess = data => {
   $('#message').text('Password changed successfully')
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('changePasswordSuccess ran. Data is :', data)
 }
 
 const changePasswordFailure = error => {
@@ -57,7 +55,7 @@ const signOutSuccess = data => {
   $('#username').text('') // removes text for username
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('signOutSuccess ran. Data is: ', data)
+  // console.log('signOutSuccess ran. Data is: ', data)
   $('#sign-out').hide() // sign out hidden
   $('#change-password').hide() // password hidden
   $('#sign-up').show() // sign up appears
