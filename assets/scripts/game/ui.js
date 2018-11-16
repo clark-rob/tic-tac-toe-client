@@ -7,8 +7,6 @@ const createGameSuccess = data => {
   $('#game-status').removeClass()
   $('#game-status').addClass('success')
   store.game = data.game // sends the game to the store, data.game takes that info
-  //   store.gameId = data.game.id
-  // console.log('createGameSuccess ran. Data is :', data.game)
   $('#game').show() // board form appear
 }
 
@@ -32,9 +30,9 @@ const updateGameFailure = error => {
   console.error('updateGameFailure ran. Error is :', error)
 }
 
-// const gameCheckWin = data => {
-//   $('#result').text('Itsa Me a' + currentPlayer + '!')
-// }
+const gameCheckWin = data => {
+  $('#result').text('Itsa Me a' + currentPlayer + '!')
+}
 
 // const gameCheckTie = data => {
 //   $('#result').text('Itsa Tie!')
@@ -44,7 +42,7 @@ module.exports = {
   createGameSuccess,
   createGameFailure,
   updateGameSuccess,
-  updateGameFailure
-  // gameCheckWin,
+  updateGameFailure,
+  gameCheckWin,
   // gameCheckTie
 }
