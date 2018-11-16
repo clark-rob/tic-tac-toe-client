@@ -56,6 +56,7 @@ const signOutSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   // console.log('signOutSuccess ran. Data is: ', data)
+  $('#game').hide() // board hidden
   $('#sign-out').hide() // sign out hidden
   $('#change-password').hide() // password hidden
   $('#sign-up').show() // sign up appears

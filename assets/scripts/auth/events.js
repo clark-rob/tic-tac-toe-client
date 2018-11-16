@@ -21,6 +21,7 @@ const onSignIn = event => {
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
   $(event.target).trigger('reset')
+  $('.create-game').show() // create game button appears on success
 }
 
 const onChangePassword = event => {
