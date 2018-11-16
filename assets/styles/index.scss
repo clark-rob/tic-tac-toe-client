@@ -1,12 +1,24 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
+  background-image: url('public/Mario-background.jpeg');
+  background-size: cover;
+  clear: both;
   margin: auto;
+  margin-bottom: 100px;
   text-align: center;
 }
 
-#sign-out {
-  display: none;
+footer {
+  bottom: 0;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+}
+
+header {
+  padding: 20px 0 40px;
 }
 
 #change-password {
@@ -22,6 +34,10 @@ body {
   width: 600px;
 }
 
+#sign-out {
+  display: none;
+}
+
 .box {
   background-image: url('public/Question_Block_NSMB.png');
   background-size: contain;
@@ -29,4 +45,8 @@ body {
   font-size: 80px;
   height: 200px;
   text-align: center;
+}
+
+.create-game { // create game button starts hidden
+  display: none;
 }

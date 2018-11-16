@@ -11,11 +11,10 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <header>
       <h1>Super Tic-Tac-Bros.</h1>
     </header>
-
-
 
     <body>
       <!-- Results Modal w/ board reset -->
@@ -98,22 +97,25 @@
       <!--Modal-->
 
       <!--GAME-->
-      <div class=''></div>
-
       <div id="game-status" class="border"></div>
 
+      <div class='current-player'></div>
+
       <div id="game">
-        <div class="box" id='0' type='click'></div>
-        <div class="box" id='1' type='click'></div>
-        <div class="box" id='2' type='click'></div>
-        <div class="box" id='3' type='click'></div>
-        <div class="box" id='4' type='click'></div>
-        <div class="box" id='5' type='click'></div>
-        <div class="box" id='6' type='click'></div>
-        <div class="box" id='7' type='click'></div>
-        <div class="box" id='8' type='click'></div>
+        <div class="box" id='0' type='click' data-cell-index='0'></div>
+        <div class="box" id='1' type='click' data-cell-index='1'></div>
+        <div class="box" id='2' type='click' data-cell-index='2'></div>
+        <div class="box" id='3' type='click' data-cell-index='3'></div>
+        <div class="box" id='4' type='click' data-cell-index='4'></div>
+        <div class="box" id='5' type='click' data-cell-index='5'></div>
+        <div class="box" id='6' type='click' data-cell-index='6'></div>
+        <div class="box" id='7' type='click' data-cell-index='7'></div>
+        <div class="box" id='8' type='click' data-cell-index='8'></div>
       </div>
+
+      <div class="total-games"></div>
 
       <button type="button" class="create-game" class="btn btn-primary">Create Game</button>
     </body>
+  <footer>A BroccoliRob Creation</footer>
 </html>
