@@ -9,6 +9,7 @@ const createGameSuccess = data => {
   store.game = data.game // sends the game to the store, data.game takes that info
   $('#game').show() // board form appear
   $('#game-status').fadeOut(3000)
+  $('.past-games').show() // hide past games
 }
 
 const createGameFailure = () => { // removed error parameter
