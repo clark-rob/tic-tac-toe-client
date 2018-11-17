@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac A TOE</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+    <header>
+      <h1>Super Tic-Tac-Bros.</h1>
+    </header>
+
+    <body>
+      <!-- Results Modal w/ board reset -->
+      <div class="modal fade" id="result" data-backdrop="static"> <!-- static prevents click outside of modal -->
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="resultsModalLabel">Winner Is...</h5>
+                <div class="modal-body">
+                <h5 id="phrase"></h5>
+                </div>
+              <div class="modal-footer">
+              <button type="button" class="create-game" class="btn btn-primary" data-dismiss="modal" data-backdrop="static">Next Game</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p id="username"></p>
+
+
+      <!-- Sign Up/In Modal-->
+      <button type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#authoizationModal"><span class="inOrOut">Sign Up/In</span></button>
+
+        <div class="modal fade" id="authoizationModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="authorizationModalLabel"><span class="inOrOut">Sign Up/In</span></h5>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <!--token-auth training-->
+                <p id="message"></p>
+
+                <form id="sign-up" >
+                  <fieldset>
+                      <input type="text" name="credentials[email]" placeholder="Email">
+                      <input type="password" name="credentials[password]"
+                       placeholder="Password">
+                      <input type="password" name="credentials[password_confirmation]"
+                       placeholder="Confirm Password">
+                      <input type="submit" value="Sign Up!">
+                  </fieldset>
+                </form>
+
+                <form id="sign-in" >
+                  <fieldset>
+                      <input type="text" name="credentials[email]" placeholder="Email">
+                      <input type="password" name="credentials[password]"
+                       placeholder="Password">
+                      <input type="submit" value="Sign In">
+                  </fieldset>
+                </form>
+
+                <form id="change-password" >
+                  <fieldset>
+                      <input type="password" name="passwords[old]" placeholder="Old Password">
+                      <input type="password" name="passwords[new]"
+                       placeholder="New Password">
+                      <input type="submit" value="Change password">
+                  </fieldset>
+                </form>
+
+                <form id="sign-out" >
+                  <fieldset>
+                      <input type="submit" value="Sign Out">
+                  </fieldset>
+                </form>
+
+                <!--token-auth training-->
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="close-modal" class="btn btn-primary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!--Sign Up/In Modal-->
+
+      <button type="button" class="create-game" class="btn btn-primary">Create Game</button>
+
+      <!--GAME-->
+      <div id="game-status"></div>
+
+      <div class='current-player'></div>
+
+      <div id="game">
+        <div class="box" id='0' type='click' data-cell-index='0'></div>
+        <div class="box" id='1' type='click' data-cell-index='1'></div>
+        <div class="box" id='2' type='click' data-cell-index='2'></div>
+        <div class="box" id='3' type='click' data-cell-index='3'></div>
+        <div class="box" id='4' type='click' data-cell-index='4'></div>
+        <div class="box" id='5' type='click' data-cell-index='5'></div>
+        <div class="box" id='6' type='click' data-cell-index='6'></div>
+        <div class="box" id='7' type='click' data-cell-index='7'></div>
+        <div class="box" id='8' type='click' data-cell-index='8'></div>
+      </div>
+
+      <div class="past-games"></div>
+    </body>
+  <footer>A BroccoliRob Creation</footer>
+</html>
