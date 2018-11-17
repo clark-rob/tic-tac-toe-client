@@ -51,7 +51,7 @@ const gameCheck = function () {
       $('.current-player').hide()
     } else if (currentMove === 9) {
       $('#result').modal('show')
-      $('#phrase').text('Itsa Tie!')
+      $('#phrase').text('...Cat Mario?')
       gameOver = true
       $('.current-player').hide()
     }

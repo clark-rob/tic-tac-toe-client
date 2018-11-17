@@ -22,7 +22,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="resultsModalLabel">Results are in...</h5>
+              <h5 class="modal-title" id="resultsModalLabel">Winner Is...</h5>
                 <div class="modal-body">
                 <h5 id="phrase"></h5>
                 </div>
@@ -37,21 +37,22 @@
       <p id="username"></p>
 
 
-      <!--Modal-->
+      <!-- Sign Up/In Modal-->
       <button type="button" class="btn btn-primary" data-toggle="modal"
-        data-target="#authoizationModal">Sign <span class="inOrOut">In</span></button>
+        data-target="#authoizationModal"><span class="inOrOut">Sign Up/In</span></button>
 
         <div class="modal fade" id="authoizationModal">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="authorizationModalLabel">Sign <span class="inOrOut">In</span></h5>
+                <h5 class="modal-title" id="authorizationModalLabel"><span class="inOrOut">Sign Up/In</span></h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
               </div>
               <div class="modal-body">
                 <!--token-auth training-->
                 <p id="message"></p>
-                <form id="sign-up" class="border">
+
+                <form id="sign-up" >
                   <fieldset>
                       <input type="text" name="credentials[email]" placeholder="Email">
                       <input type="password" name="credentials[password]"
@@ -62,7 +63,7 @@
                   </fieldset>
                 </form>
 
-                <form id="sign-in" class="border">
+                <form id="sign-in" >
                   <fieldset>
                       <input type="text" name="credentials[email]" placeholder="Email">
                       <input type="password" name="credentials[password]"
@@ -71,7 +72,7 @@
                   </fieldset>
                 </form>
 
-                <form id="change-password" class="border">
+                <form id="change-password" >
                   <fieldset>
                       <input type="password" name="passwords[old]" placeholder="Old Password">
                       <input type="password" name="passwords[new]"
@@ -80,7 +81,7 @@
                   </fieldset>
                 </form>
 
-                <form id="sign-out" class="border">
+                <form id="sign-out" >
                   <fieldset>
                       <input type="submit" value="Sign Out">
                   </fieldset>
@@ -89,15 +90,17 @@
                 <!--token-auth training-->
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="close-modal" class="btn btn-primary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
-      <!--Modal-->
+      <!--Sign Up/In Modal-->
+
+      <button type="button" class="create-game" class="btn btn-primary">Create Game</button>
 
       <!--GAME-->
-      <div id="game-status" class="border"></div>
+      <div id="game-status"></div>
 
       <div class='current-player'></div>
 
@@ -113,9 +116,7 @@
         <div class="box" id='8' type='click' data-cell-index='8'></div>
       </div>
 
-      <div class="total-games"></div>
-
-      <button type="button" class="create-game" class="btn btn-primary">Create Game</button>
+      <div class="past-games"></div>
     </body>
   <footer>A BroccoliRob Creation</footer>
 </html>

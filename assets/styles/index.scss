@@ -2,6 +2,9 @@
 
 body {
   background-image: url('public/Mario-background.jpeg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
   clear: both;
   margin: auto;
@@ -9,16 +12,34 @@ body {
   text-align: center;
 }
 
+button {
+  background-color: #00f;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  padding: 8px;
+}
+
 footer {
   bottom: 0;
-  color: white;
+  color: #fff;
   padding: 20px;
   position: fixed;
+  text-align: right;
   width: 100%;
 }
 
+h1 {
+  color: #fff;
+  font-size: 60px;
+  text-shadow:
+    -3px 0 #000,
+    0 3px #000,
+    1px 1px 5px #000;
+}
+
 header {
-  padding: 20px 0 40px;
+  padding: 10px 0 30px;
 }
 
 #change-password {
@@ -34,8 +55,30 @@ header {
   width: 600px;
 }
 
+#game-status {
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+#phrase {
+  color: #fff;
+  text-shadow:
+    -1px 0 #000,
+    0 1px #000,
+    1px 1px 3px #000;
+}
+
 #sign-out {
   display: none;
+}
+
+#username {
+  color: #fff;
+  font-size: 20px;
+  text-shadow:
+    -3px 0 #000,
+    0 3px #000,
+    1px 1px 5px #000;
 }
 
 .box {
@@ -49,4 +92,28 @@ header {
 
 .create-game { // create game button starts hidden
   display: none;
+}
+
+.current-player {
+  color: #fff;
+  font-size: 40px;
+  padding: 10px 0;
+  text-shadow:
+    -3px 0 #000,
+    0 3px #000,
+    1px 1px 5px #000;
+}
+
+.modal-content {
+  background-color: #ffe644;
+  border: 4px solid #ab9a2b;
+}
+
+.past-games {
+  color: #fff;
+  font-size: 30px;
+  text-shadow:
+    -3px 0 #000,
+    0 3px #000,
+    1px 1px 5px #000;
 }

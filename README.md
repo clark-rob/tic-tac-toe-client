@@ -70,7 +70,10 @@ boxes (9) are filled leading to a tie game.
 
   The process became a bit more complex and certain features had to be cut to
   reach barebone, workable status. The product shown is a fully functional
-  game, with a lot more work to be fully completed. The board works on a click function that creates the player names on the game board. When a winning path is selected by a player, a prompt will appear declaring the winner. 'Sign Up', 'Sign In', 'Changing Password' and 'Sign Out' all work, but have minor bugs.
+  game, with a lot more work to be fully completed. The board works on a click
+  function that creates the player names on the game board. When a winning path
+  is selected by a player, a prompt will appear declaring the winner. 'Sign Up',
+  'Sign In', 'Changing Password' and 'Sign Out' all work, but have minor bugs.
 
   The work for this first project so far was intuitive, fun and intimidating.
   You don't realize how many different variables, functions and combinations
@@ -82,17 +85,12 @@ boxes (9) are filled leading to a tie game.
   going to be the biggest key to get this project, and many others, to the
   point where they will be great.
 
-
 ## Future Fixes
-- Fix one click feature on board
-- On win or tie, New Game button clears board, player move count and saves
-game outcome
 - MAKE WORK DRY!!!!!
-- Imporve CSS
+- Improve CSS on board and modals
 - Instead of player names, Images of each player would appear as tokens on the
 board
-- Sign up window only appears to new users
-- In authorization, remove written content in input boxes after submitted
+- Insert other funny Mario items, like Cat Mario on tie
 - Save game logic created to store inprogress games
 
 ## Wireframe
