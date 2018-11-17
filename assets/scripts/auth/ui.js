@@ -58,6 +58,7 @@ const signOutSuccess = data => {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#game').hide() // board hidden
+  $('.current-player').hide()
   $('#sign-out').hide() // sign out hidden
   $('#change-password').hide() // password hidden
   $('#sign-up').show() // sign up appears
