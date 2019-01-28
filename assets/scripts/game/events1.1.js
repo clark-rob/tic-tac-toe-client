@@ -20,7 +20,6 @@ const onCreateGameClick = event => { // new game on click function
   $('.box').empty() // clears box of content
   startBoard = []// beginning status of board(empty)
   currentPlayer = playerOne // beginning player is playerOne
-  // $('.current-player').show(currentPlayer)
   currentMove = 0 // move starts at 0
   gameOver = false // starts false, game is not done
   $('.current-player').show().text('MARIO, LETSA GOOO!')

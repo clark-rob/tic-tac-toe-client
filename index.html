@@ -34,24 +34,8 @@
         </div>
       </div>
 
-      <!-- Welcome Message -->
-      <div class="welcome-message">
-        <h2>Welcome to Super Tic-Tac-Bros!</h2>
-        <p>The rules are easy:</p>
-          <ul>
-            <li>Sign up* then sign in to join the game</li>
-            <li>Mario begins the game by selecting a square (choose wisely!)</li>
-            <li>Luigi follows up with a selection of their own square</li>
-            <li>Then Mario goes for their second turn, followed by Luigi's turn</li>
-            <li>Each brother follows that pattern until a tie or one becomes the winner!</li>
-            <li>Winner goes to whom ever is able to have three connected squares</li>
-            <li>Good luck and have fun!</li>
-          </ul>
-        <p>*PLEASE DO NOT use your actual email or password</p>
-      </div>
-
       <!-- Displayed User email -->
-      <p id="username"></p>
+      <p class="username"></p>
 
 
       <!-- Sign Up/In Modal-->
@@ -70,54 +54,83 @@
                 <p id="message"></p>
 
                 <form id="sign-up" >
-                  <fieldset>
-                      <input type="text" name="credentials[email]" placeholder="Email">
-                      <input type="password" name="credentials[password]"
-                       placeholder="Password">
-                      <input type="password" name="credentials[password_confirmation]"
-                       placeholder="Confirm Password">
-                      <input type="submit" value="Sign Up!">
-                  </fieldset>
+                  <div>
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                  </div>
+                  <div>
+                    <input type="password" name="credentials[password]"
+                     placeholder="Password">
+                  </div>
+                  <div>
+                    <input type="password" name="credentials[password_confirmation]"
+                     placeholder="Confirm Password">
+                  </div>
+                  <div>
+                    <input type="submit" value="Sign Up!">
+                  </div>
                 </form>
+                <br/>
 
                 <form id="sign-in" >
-                  <fieldset>
-                      <input type="text" name="credentials[email]" placeholder="Email">
-                      <input type="password" name="credentials[password]"
-                       placeholder="Password">
-                      <input type="submit" value="Sign In">
-                  </fieldset>
+                  <div>
+                    <input type="text" name="credentials[email]" placeholder="Email">
+                    <input type="password" name="credentials[password]"
+                     placeholder="Password">
+                    <input type="submit" value="Sign In">
+                  </div>
                 </form>
 
                 <form id="change-password" >
-                  <fieldset>
-                      <input type="password" name="passwords[old]" placeholder="Old Password">
-                      <input type="password" name="passwords[new]"
-                       placeholder="New Password">
-                      <input type="submit" value="Change password">
-                  </fieldset>
+                  <div>
+                    <input type="password" name="passwords[old]" placeholder="Old Password">
+                  </div>
+                  <div>
+                    <input type="password" name="passwords[new]"
+                     placeholder="New Password">
+                  </div>
+                  <div>
+                    <input type="submit" value="Change password">
+                  </div>
                 </form>
+                <br/>
 
                 <form id="sign-out" >
-                  <fieldset>
-                      <input type="submit" value="Sign Out">
-                  </fieldset>
+                  <div>
+                    <input type="submit" value="Sign Out">
+                  </div>
                 </form>
 
                 <!--token-auth training-->
               </div>
               <div class="modal-footer">
-                <button type="button" class="close-modal" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="close-modal btn-primary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
-      <!--Sign Up/In Modal-->
+      <!--- Sign Up/In Modal ------------->
 
-      <button type="button" class="create-game" class="btn btn-primary">Create Game</button>
+      <!-- Welcome Message -->
+      <div class="welcome-message">
+        <h2>Welcome to Super Tic-Tac-Bros!</h2>
+        <p>The rules are easy:</p>
+          <ul>
+            <li>Sign up* then sign in to join the game</li>
+            <li>Mario begins the game by selecting a square (choose wisely!)</li>
+            <li>Luigi follows up with a selection of their own square</li>
+            <li>Then Mario goes for their second turn, followed by Luigi's turn</li>
+            <li>Each brother follows that pattern until a tie or one becomes the winner!</li>
+            <li>Winner goes to whom ever is able to have three connected squares</li>
+            <li>Good luck and have fun!</li>
+          </ul>
+        <p>*PLEASE DO NOT use your actual email or password</p>
+      </div>
+      <!-- Welcome Message -->
+
+      <button type="button" class="create-game btn-danger">Create Game</button>
 
       <!--GAME-->
-      <div id="game-status"></div>
+      <div class="game-status"></div>
 
       <div class='current-player'></div>
 
@@ -135,5 +148,7 @@
 
       <div class="past-games"></div>
     </body>
+
   <footer>A BroccoliRob Creation</footer>
+
 </html>
