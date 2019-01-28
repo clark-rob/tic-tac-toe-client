@@ -1,6 +1,4 @@
-**Tic-Tac_A_TOE**
-
-## Super Tic-Tac Bros.
+# Super Tic-Tac Bros.
 The game; Tic-Tac-Toe. The players; Mario (you) and Luigi (taller version of you wearing green).
 Determine who is the better sibling as you face off on a grid of choice.
 

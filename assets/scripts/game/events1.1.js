@@ -5,8 +5,8 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 
 /* --------------vaiables ---------------- */
-const playerOne = 'Mario'
-const playerTwo = 'Luigi'
+const playerOne = '<img id="Mario" src="./public/marioprofile.png" />'
+const playerTwo = '<img id="Luigi" src="./public/luigiprofile.png" />'
 let currentPlayer = playerOne
 let currentMove = 0 // move to begin with
 // gameBoard:
@@ -36,14 +36,14 @@ const onCreateGameClick = event => { // new game on click function
 /* -------------------------------Win/Lose/Tie------------------------------ */
 const gameCheck = function () {
   if (currentMove >= 4) { // if currentMove reaches 4 moves, P1 and P2 moved twice each
-    if ($('#0').text() === $('#1').text() && $('#1').text() === $('#2').text() && $('#0').text() !== '' ||
-    $('#3').text() === $('#4').text() && $('#4').text() === $('#5').text() && $('#3').text() !== '' ||
-    $('#6').text() === $('#7').text() && $('#7').text() === $('#8').text() && $('#6').text() !== '' ||
-    $('#0').text() === $('#3').text() && $('#3').text() === $('#6').text() && $('#0').text() !== '' ||
-    $('#1').text() === $('#4').text() && $('#4').text() === $('#7').text() && $('#1').text() !== '' ||
-    $('#2').text() === $('#5').text() && $('#5').text() === $('#8').text() && $('#2').text() !== '' ||
-    $('#0').text() === $('#4').text() && $('#4').text() === $('#8').text() && $('#0').text() !== '' ||
-    $('#2').text() === $('#4').text() && $('#4').text() === $('#6').text() && $('#2').text() !== '') {
+    if ($('#0').val() === $('#1').val() && $('#1').val() === $('#2').val() && $('#0').val() !== '' ||
+    $('#3').val() === $('#4').val() && $('#4').val() === $('#5').val() && $('#3').val() !== '' ||
+    $('#6').val() === $('#7').val() && $('#7').val() === $('#8').val() && $('#6').val() !== '' ||
+    $('#0').val() === $('#3').val() && $('#3').val() === $('#6').val() && $('#0').val() !== '' ||
+    $('#1').val() === $('#4').val() && $('#4').val() === $('#7').val() && $('#1').val() !== '' ||
+    $('#2').val() === $('#5').val() && $('#5').val() === $('#8').val() && $('#2').val() !== '' ||
+    $('#0').val() === $('#4').val() && $('#4').val() === $('#8').val() && $('#0').val() !== '' ||
+    $('#2').val() === $('#4').val() && $('#4').val() === $('#6').val() && $('#2').val() !== '') {
       $('#result').modal('show')
       $('.current-player').hide()
       $('#phrase').text('A Me, a' + currentPlayer + '!')
@@ -62,19 +62,28 @@ const gameCheck = function () {
 /* --------------------------------onBoxClick------------------------------- */
 const onBoxClick = event => {
   /* --------------------Player-Change----------------- */
-  const boxIndex = $('#' + event.target.id).html() // creates variable that is the index of selected box in html
+  const boxIndex = $(event.target.id) // creates variable that is the index of selected box in html
+  console.log(event.target.id)
   if (boxIndex !== 'Mario' && boxIndex !== 'Luigi') { // if the selected box does not equal x or o
+    // console.log(playerOne)
+    console.log($('#0').children())
+    console.log($('#1').contents())
+    console.log($('#0').children() === $('#1').children())
     if (currentMove % 2 === 0) { // current move has a remainder of 2
       $('.current-player').show().text('LUIGI TIME!') // shows the next player
       currentPlayer = playerOne // make currentPlayer P1
       $(event.target).append(currentPlayer) // insert P1
       startBoard[(event.target.id)] = currentPlayer // inserts P1 at the selected id of the array startBoard
+      console.log('current player = ' + event.target)
+      // console.log('boxIndex = ' + boxIndex)
       currentMove++ // increase currentMove by 1
     } else { // no remainder
       $('.current-player').show().text('MARIO, LETSA GOOO!')
       currentPlayer = playerTwo // make currentPlayer P2
       $(event.target).append(currentPlayer) // insert current P2
       startBoard[(event.target.id)] = currentPlayer // inserts P2 at the selected id of the array startBoard
+      // console.log('current player = ' + currentPlayer)
+      // console.log('boxIndex = ' + boxIndex)
       currentMove++ // increase currentMove by 1
     }
   } else {
